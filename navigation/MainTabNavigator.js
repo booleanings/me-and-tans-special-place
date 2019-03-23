@@ -8,6 +8,7 @@ import MapScreen from '../screens/MapScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SurveyScreen from '../screens/SurveyScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import LotteryScreen from '../screens/LotteryScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -69,11 +70,25 @@ SurveyStack.navigationOptions = {
   ),
 };
 
+const LotteryStack = createStackNavigator({
+  Lottery: LotteryScreen,
+});
+
+LotteryStack.navigationOptions = {
+  tabBarLabel: 'Lottery',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+    />
+  ),
+};
 
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
   MapScreen,
-  SurveyStack
+  SurveyStack,
+  LotteryStack
 });
