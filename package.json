@@ -15,7 +15,10 @@
     "expo": "^32.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+<<<<<<< HEAD
     "react-native-maps": "^0.23.0",
+=======
+>>>>>>> 71c85a0212558bb142fd64ccdc44835a1a0d0874
     "react-navigation": "^3.0.9",
     "tcomb-form-native": "^0.6.20"
   },
