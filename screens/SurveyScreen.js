@@ -4,12 +4,18 @@ import { View, StyleSheet, Button } from 'react-native';
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
-
+const Gender = t.enums({
+    M: 'Male',
+    F: 'Female'
+  });
+  
 const User = t.struct({
-  email: t.String,
-  username: t.maybe(t.String),
-  password: t.String,
-  terms: t.Boolean
+  name: t.String,
+  zipCode: t.Number,
+  age: t.Number,
+  protection: t.Boolean,
+  sexualPartners: t.Number,
+  gender: Gender
 });
 
 const formStyles = {
@@ -38,15 +44,6 @@ const formStyles = {
 
 const options = {
   fields: {
-    email: {
-      error: 'Without an email address how are you going to reset your password when you forget it?'
-    },
-    password: {
-      error: 'Choose something you use on a dozen other sites or something you won\'t remember'
-    },
-    terms: {
-      label: 'Agree to Terms',
-    },
   },
   stylesheet: formStyles,
 };
@@ -55,19 +52,20 @@ export default class SurveyScreen extends Component {
   handleSubmit = () => {
     const value = this._form.getValue();
     console.log('value: ', value);
+    this.props.navigation.navigate('HomeScreen');
   }
   
   render() {
     return (
       <View style={styles.container}>
+       <Button
+          title="Sign Up!"
+          onPress={this.handleSubmit}
+        />
         <Form 
           ref={c => this._form = c}
           type={User} 
           options={options}
-        />
-        <Button
-          title="Sign Up!"
-          onPress={this.handleSubmit}
         />
       </View>
     );
